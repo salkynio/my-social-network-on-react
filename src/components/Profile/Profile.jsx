@@ -4,14 +4,12 @@ import MyPost from "./My Posts/MyPost";
 import ProfileInfo from "./ProfileInfo/PfofileInfo";
 
 const Profile = (props) =>{
-    // const messagesPost = [
-    //      {id:1, message: 'Hi,how are you?', likesCount:23},
-    //      {id:2, message: "It's my first post." , likesCount:3}
-    // ]
     return (
         <div>
             <ProfileInfo/>
-            <MyPost posts={props.posts} addPost={props.addPost}/>
+            <MyPost posts={props.profilePage.posts}
+                    newPostText = {props.profilePage.newPostText}
+                    dispatch={props.dispatch}/>
         </div>)
 }
 export default Profile;

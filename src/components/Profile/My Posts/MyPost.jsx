@@ -1,28 +1,40 @@
 import React, {createRef} from 'react';
-import  s from './MyPost.module.css'
+import s from './MyPost.module.css'
 import Post from "./Post/Post";
+import {type} from "@testing-library/user-event/dist/type";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../Redux/state";
 
-const MyPost = (props) =>{
+const MyPost = (props) => {
+    let postsElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>);
+
     let newPostElement = React.createRef(); // создаем ссылку
-    let addPost = () =>{
-       let text = newPostElement.current.value; //в ссылку засовываем текст
-       props.addPost(text)
+
+    let addPost = () => {
+        // let text = newPostElement.current.value; //в ссылку засовываем текст // нету смысла брать отсюда значение
+        props.dispatch(addPostActionCreator());
+        // props.updateNewTextPost(' ');
+
     }
-    let messagesElements = props.posts.map(p=><Post message = {p.message} likesCount = {p.likesCount}/>)
-    return (  <div className={s.myPost}>
-               <h3>My posts</h3>
-        <div>
+    let onPostChange = () => {
+        let text = newPostElement.current.value;
+        props.dispatch(updateNewPostTextActionCreator(text));
+    }
+
+    return (
+        <div className={s.myPost}>
+            <h3>My posts</h3>
             <div>
-                <textarea ref={newPostElement}> </textarea>
+                <div>
+                    <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText}> </textarea>
+                </div>
+                <div>
+                    <button onClick={addPost}>Add post</button>
+                </div>
+
             </div>
-            <div>
-                <button onClick={addPost}>Add post</button>
-            </div>
 
-        </div>
+            {postsElements}
 
-        {messagesElements}
-
-            </div>)
+        </div>)
 }
 export default MyPost;

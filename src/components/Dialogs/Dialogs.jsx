@@ -11,8 +11,8 @@ const Dialogs = (props) =>{
         let text = newPostElement.current.value;
         alert(text);
     }
-    const dialogsElements = props.dialogs.map(d=><DialogItem name={d.name} id={d.id}/>);
-    const messagesElements =props.messages.map(m => <Message text={m.message}/> )
+    const dialogsElements = props.state.dialogs.map(d=><DialogItem name={d.name} id={d.id}/>);
+    const messagesElements =props.state.messages.map(m => <Message text={m.message}/> )
 
     return <div className={s.dialogs}>
        <div className={s.dialogsItems}>
