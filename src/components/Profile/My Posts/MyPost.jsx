@@ -2,7 +2,7 @@ import React, {createRef} from 'react';
 import s from './MyPost.module.css'
 import Post from "./Post/Post";
 import {type} from "@testing-library/user-event/dist/type";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../Redux/state";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../Redux/profile-reduce";
 
 const MyPost = (props) => {
     let postsElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>);
