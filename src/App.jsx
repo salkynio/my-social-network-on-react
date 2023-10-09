@@ -5,11 +5,12 @@ import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import store from "./Redux/state";
+import store from "./Redux/redux-store";
 
 
 
 function App(props) {
+    debugger;
   return (
       <BrowserRouter>
     <div className="app-wrapper">

@@ -1,9 +1,17 @@
-import state from "./state";
+import state from "./store";
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
-const profileReduce = (state,action) => {
+let initialState ={
+    posts: [
+        {id: 1, message: 'Hi,how are you?', likesCount: 23},
+        {id: 2, message: "It's my first post.", likesCount: 3}
+    ],
+    newPostText: ' it'
+}
+
+const profileReduce = (state = initialState,action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
